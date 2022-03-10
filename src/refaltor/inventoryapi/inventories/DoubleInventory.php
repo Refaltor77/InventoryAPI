@@ -12,7 +12,7 @@ use pocketmine\network\mcpe\protocol\types\CacheableNbt;
 use pocketmine\player\Player;
 use pocketmine\block\tile\Nameable;
 use pocketmine\world\Position;
-use refaltor\inventoryapi\DelayTask;
+use refaltor\inventoryapi\schedulers\DelayTask;
 use refaltor\inventoryapi\InventoryAPI;
 
 class DoubleInventory extends SimpleChestInventory {
