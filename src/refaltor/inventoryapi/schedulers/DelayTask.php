@@ -1,6 +1,6 @@
 <?php
 
-namespace refaltor\inventoryapi;
+namespace refaltor\inventoryapi\schedulers;
 
 use pocketmine\player\Player;
 use pocketmine\scheduler\Task;
