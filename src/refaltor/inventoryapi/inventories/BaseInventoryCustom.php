@@ -28,26 +28,30 @@ abstract class BaseInventoryCustom extends SimpleInventory implements BlockInven
         return $this->name;
     }
 
-    public function transactionCancel(): void {
+    public function transactionCancel(): self {
         $this->transactionCancel = true;
+        return $this;
     }
 
     public function isCancelTransaction(): bool {
         return $this->transactionCancel;
     }
 
-    public function reloadTransaction(): void {
+    public function reloadTransaction(): self {
         $this->transactionCancel = false;
+        return $this;
     }
 
-    public function setName(string $value){
+    public function setName(string $value): self {
         $this->name = $value;
+        return $this;
     }
 
-    public function setViewOnly(bool $value = true){
+    public function setViewOnly(bool $value = true): self {
         $this->hasViewOnly = $value;
+        return $this;
     }
-
+        
     public function isViewOnly() : bool{
         return $this->hasViewOnly;
     }
@@ -56,16 +60,18 @@ abstract class BaseInventoryCustom extends SimpleInventory implements BlockInven
         return $this->clickListener;
     }
 
-    public function setClickListener(?callable $callable){
+    public function setClickListener(?callable $callable): self {
         $this->clickListener = $callable;
+        return $this;
     }
 
     public function getCloseListener(){
         return $this->closeListener;
     }
 
-    public function setCloseListener(?callable $callable){
+    public function setCloseListener(?callable $callable): self {
         $this->closeListener = $callable;
+        return $this;
     }
 
     public function onClose(Player $who) : void {
