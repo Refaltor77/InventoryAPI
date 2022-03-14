@@ -8,6 +8,7 @@ use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
+use pocketmine\utils\SingletonTrait;
 use refaltor\inventoryapi\events\PacketListener;
 use refaltor\inventoryapi\inventories\{BaseInventoryCustom, SimpleChestInventory, DoubleInventory};
 
@@ -16,12 +17,8 @@ class InventoryAPI extends PluginBase
     /*
      * Features: workbench inventory, hopper inventory
      */
-
-    private static self $instance;
-
-    public static function getInstance(): self {
-        return self::$instance;
-    }
+    
+    use SingletonTrait;
 
     public function onEnable(): void
     {
