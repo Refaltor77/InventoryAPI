@@ -27,18 +27,13 @@ class InventoryAPI extends PluginBase
         $this->getServer()->getPluginManager()->registerEvents(new PacketListener(), $this);
     }
 
-    public static function createSimpleChest(bool $isViewOnly = false): SimpleChestInventory {
-        $inventory = new SimpleChestInventory();
-        $inventory->setViewOnly($isViewOnly);
-        return $inventory;
+    public function create(string $type = "simple", bool $isViewOnly = false): BaseInventoryCustom {
+        return match($type) {
+            "double" => (new DoubleInventory()),
+            default => (new SimpleChestInventory())
+        }->setViewOnly($isViewOnly);
     }
-
-    public static function createDoubleChest(bool $isViewOnly = false): SimpleChestInventory {
-        $inventory = new DoubleInventory();
-        $inventory->setViewOnly($isViewOnly);
-        return $inventory;
-    }
-
+    
     public function getDelaySend(): int {
         return $this->getConfig()->get('delay-send-double-chest') ?? 10;
     }
