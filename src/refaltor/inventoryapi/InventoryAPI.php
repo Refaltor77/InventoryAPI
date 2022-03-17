@@ -28,10 +28,10 @@ class InventoryAPI extends PluginBase
     }
 
     public function create(string $type = "simple", bool $isViewOnly = false): BaseInventoryCustom {
-        return match($type) {
+        return (match($type) {
             "double" => (new DoubleInventory()),
             default => (new SimpleChestInventory())
-        }->setViewOnly($isViewOnly);
+        })->setViewOnly($isViewOnly);
     }
     
     public function getDelaySend(): int {
